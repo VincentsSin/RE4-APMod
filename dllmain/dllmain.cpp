@@ -16,10 +16,8 @@ HMODULE g_module_handle = nullptr;
 
 void Init_Main()
 {
-	con.log("Big ironic thanks to QLOC S.A.");
-
 	// Get game pointers and version info
-	if (!re4t::init::Game())
+	if (!re4ap::init::Game())
 		return;
 	
 	// Make sure steam_appid.txt exists
