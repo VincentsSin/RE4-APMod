@@ -1,1 +1,0 @@
-Info about this setting_overrides folder can be found on the wiki: https://github.com/nipkownix/re4_tweaks/wiki/Modding-Enhancements#ini-overrides
