@@ -25,188 +25,19 @@ GAME_NAME = "Resident Evil 4"
 # Default save paths by platform
 if sys.platform == "win32":
     DEFAULT_SAVE_PATH = Path(os.environ.get("APPDATA", "")) / ".madgarden" / "DR2C"
-elif sys.platform == "darwin":
-    DEFAULT_SAVE_PATH = Path.home() / "Library" / "Application Support" / ".madgarden" / "DR2C"
-else:
-    DEFAULT_SAVE_PATH = Path.home() / ".madgarden" / "DR2C"
 
 # Item data matching mod and APWorld
 ITEM_NAMES = {
-    # Basic Resources (100-104)
-    100: "Food Pack (+5)", 101: "Food Crate (+15)", 102: "Gas Can (+50)",
-    103: "Ammo Box (+20)", 104: "Medical Supplies (+5)",
-    # Stat Training (110-115)
-    110: "Shooting Training", 111: "Strength Training", 112: "Fitness Training",
-    113: "Medical Training", 114: "Mechanical Training", 115: "Morale Boost",
-    # Common Weapons (120-123)
-    120: "Pistol", 121: "Shotgun", 122: "Uzi", 123: "Hunting Rifle",
-    # Rare Weapons (124-127)
-    124: "Grenades (x3)", 125: "Chainsaw", 126: "AK-47", 127: "Flamethrower",
-    # Special (130-132)
-    130: "Zombo Point", 131: "Car Repair Kit", 132: "Survivor Cache",
-    # Progressive Food (200-203)
-    200: "Small Food (+3)", 201: "Medium Food (+8)", 202: "Large Food (+12)", 203: "Huge Food (+20)",
-    # Progressive Gas (210-213)
-    210: "Small Gas (+25)", 211: "Medium Gas (+75)", 212: "Large Gas (+100)", 213: "Gas Tanker (+150)",
-    # Progressive Ammo (220-223)
-    220: "Small Ammo (+10)", 221: "Medium Ammo (+30)", 222: "Large Ammo (+50)", 223: "Ammo Depot (+75)",
-    # Progressive Medical (230-232)
-    230: "First Aid (+3)", 231: "Medical Bag (+8)", 232: "Hospital Cache (+15)",
-    # Character Upgrades (300-314)
-    300: "Strength Manual", 301: "Fitness Guide", 302: "Shooting Voucher",
-    303: "Medical Textbook", 304: "Mechanic's Handbook",
-    310: "Protein Powder (+2 STR)", 311: "Energy Drinks (+2 FIT)", 312: "Weapon Oil (+2 SHT)",
-    313: "Medical Journals (+2 MED)", 314: "Tool Set (+2 MCH)",
-    321: "Vitality Boost", 322: "Speed Boost",
-    # Morale (400-412)
-    400: "Morale +1", 401: "Morale +2", 402: "Morale +3", 403: "Morale +8",
-    410: "Calming Tea", 411: "Friendship Token", 412: "Therapy Session",
-    # Random Weapons (500-530)
-    500: "Random Common Melee", 501: "Random Common Gun",
-    502: "Random Uncommon Melee", 503: "Random Uncommon Gun",
-    504: "Random Rare Melee", 505: "Random Rare Gun",
-    510: "Random Weapons x3", 511: "Random Armory x5",
-    520: "Molotov (x3)", 521: "Pipe Bombs (x3)", 522: "Grenade Bundle (x5)",
-    530: "Legendary Weapon",
-    # Utility (600-622)
-    600: "Car Parts", 601: "Mechanic's Kit", 622: "Safe Haven (Full Heal)",
-    # Zombo Points (700-702)
-    700: "Zombo +1", 701: "Zombo +2", 702: "Zombo +5",
-    # Special Items (710-730)
-    710: "Mystery Box", 711: "Pandora's Box", 730: "Supply Drop",
-    # Mode Unlocks (800-819)
-    800: "Mode Unlock: Familiar Characters",
-    801: "Mode Unlock: Rare Characters",
-    802: "Mode Unlock: Short Trip",
-    803: "Mode Unlock: Long Road",
-    804: "Mode Unlock: Four Jerks",
-    805: "Mode Unlock: Deadlier Road",
-    806: "Mode Unlock: Familiar EXTREME",
-    807: "Mode Unlock: Rare EXTREME",
-    808: "Mode Unlock: Marathon",
-    809: "Mode Unlock: K*E*P*A",
-    810: "Mode Unlock: Four Jerks EXTREME",
-    811: "Mode Unlock: Endless",
-    812: "Mode Unlock: O*P*P",
-    813: "Mode Unlock: Quick Death",
-    814: "Mode Unlock: Infection",
-    815: "Mode Unlock: Severe Weather",
-    816: "Mode Unlock: RPG Mode",
-    817: "Mode Unlock: Scepter Mode",
-    818: "Mode Unlock: Mutation",
-    819: "Mode Unlock: Infection EXTREME",
-    # Traps (900-914)
-    900: "TRAP: Food Spoiled", 901: "TRAP: Morale Crisis", 902: "TRAP: Ambush",
-    903: "TRAP: Gas Leak", 904: "TRAP: Weapon Jam", 905: "TRAP: Thief",
-    906: "TRAP: Injury", 907: "TRAP: Car Damage", 908: "TRAP: Argument",
-    909: "TRAP: Bandits", 910: "TRAP: Bad Omen", 911: "TRAP: Bad Weather",
-    912: "TRAP: Gear Lost", 913: "TRAP: Food Poison", 914: "TRAP: False Hope",
+    # To be filled out
 }
-
-# Mode info for per-mode locations
-MODE_INFO = {
-    0: "Normal", 1: "Familiar", 2: "Rare", 3: "Short", 4: "Long",
-    5: "Four Jerks", 6: "Deadlier", 7: "Familiar EX", 8: "Rare EX",
-    9: "Marathon", 10: "KEPA", 11: "Four Jerks EX", 12: "Endless",
-    13: "OPP", 14: "Quick Death", 15: "Infection", 16: "Weather",
-    17: "RPG", 18: "Scepter", 19: "Mutation", 20: "Infection EX",
-}
-
-# Mode ID to goal_mode key mapping (for matching against slot_data)
-MODE_ID_TO_KEY = {
-    0: "normal", 1: "familiar", 2: "rare", 3: "short", 4: "long",
-    5: "4jerks", 6: "deadlier", 7: "familiarEX", 8: "rareEX",
-    9: "marathon", 10: "kepa", 11: "4jerksEX", 12: "endless",
-    13: "opp", 14: "quickdeath", 15: "infection", 16: "weather",
-    17: "rpg", 18: "scepter", 19: "mutation", 20: "infectionEX",
-}
-
 def get_location_name(loc_id: int) -> str:
     """Get location name from ID, handling all location types."""
     
-    # Global Day Start: 1000 + day (1001-1030)
-    if 1001 <= loc_id <= 1030:
-        return f"Day {loc_id - 1000} Start"
-    
-    # Global Day Clear: 1100 + day (1101-1130)
-    if 1101 <= loc_id <= 1130:
-        return f"Day {loc_id - 1100} Clear"
-    
-    # Locations Visited: 2000 + count (2001-2320) - expanded to 320
-    if 2001 <= loc_id <= 2320:
-        return f"Locations Visited: {loc_id - 2000}"
-    
-    # Sieges: 3000 + count (3001-3065) - expanded to 65
-    if 3001 <= loc_id <= 3065:
-        return f"Sieges Survived: {loc_id - 3000}"
-    
-    # Weapon Categories: 4001-4007 (common) and 4102-4109 (rare)
-    weapon_categories = {
-        4001: "Found Handgun",
-        4002: "Found Rifle",
-        4003: "Found Shotgun", 
-        4004: "Found Blade",
-        4005: "Found Explosive",
-        4006: "Found Heavy Weapon",
-        4007: "Found Blunt Weapon",
-        4102: "Found Flamethrower",
-        4103: "Found Minigun",
-        4105: "Found AK-47",
-        4106: "Found Sledgehammer",
-        4107: "Found Fire Axe",
-        4109: "Found Bow",
-    }
-    if loc_id in weapon_categories:
-        return weapon_categories[loc_id]
-    
-    # Weapons Collected: 4200 + count (4201-4420) - expanded to 220
-    if 4201 <= loc_id <= 4420:
-        return f"Weapons Collected: {loc_id - 4200}"
-    
-    # Kills 1100-11000: 5000 + (kills/100) (5011-5110) - expanded to 11000
-    if 5011 <= loc_id <= 5110:
-        return f"Zombie Kills: {(loc_id - 5000) * 100}"
-    
-    # Kills 50-1000: 6000 + kills, except 6999 = 1000 kills
-    if loc_id == 6999:
-        return "Zombie Kills: 1000"
-    if 6050 <= loc_id <= 6950:
-        return f"Zombie Kills: {loc_id - 6000}"
-    
-    # Toilets: 7000 + count (7001-7110) - expanded to 110
-    if 7001 <= loc_id <= 7110:
-        return f"Toilets Searched: {loc_id - 7000}"
-    
-    # Recruits: 8000 + count (8001-8065) - expanded to 65
-    if 8001 <= loc_id <= 8065:
-        return f"Characters Recruited: {loc_id - 8000}"
-    
-    # Containers: 9000 + count (9001-9880) - expanded to 880
-    if 9001 <= loc_id <= 9880:
-        return f"Containers Looted: {loc_id - 9000}"
-    
-    # Per-mode locations: 10000 + (mode_id * 100) + offset
-    # offset 1-30 = day start, 31-60 = day clear, 99 = victory
-    if 10000 <= loc_id <= 12199:
-        mode_offset = loc_id - 10000
-        mode_id = mode_offset // 100
-        offset = mode_offset % 100
-        
-        mode_name = MODE_INFO.get(mode_id, f"Mode {mode_id}")
-        
-        if offset == 99:
-            return f"[{mode_name}] Victory"
-        elif 31 <= offset <= 60:
-            return f"[{mode_name}] Day {offset - 30} Clear"
-        elif 1 <= offset <= 30:
-            return f"[{mode_name}] Day {offset} Start"
-        else:
-            return f"[{mode_name}] Unknown {offset}"
-    
+    # Will fill this in later once locations are determined    
     return f"Unknown Location {loc_id}"
 
 
-CONFIG_FILE = Path.home() / ".drtc_ap_client.json"
+CONFIG_FILE = Path.home() / ".re4_ap_client.json"
 
 # Dark theme colors
 DARK_BG = "#1a1a1a"
